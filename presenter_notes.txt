@@ -1,0 +1,114 @@
+15-Minute Teaching Demo Timeline: Hashing — From Passwords to Blockchain
+=========================================================================
+
+TIMELINE OVERVIEW
+-----------------
+ Time   | Slide | Topic                          | Duration
+--------|-------|--------------------------------|---------
+ 0:00   |   1   | Title & Introduction           |  0:30
+ 0:30   |   2   | A Question to Start            |  1:30
+ 2:00   |   3   | What Is a Hash Function?       |  2:00
+ 4:00   |   4   | Three Key Properties           |  2:30
+ 6:30   |   5   | The Avalanche Effect           |  2:00
+ 8:30   |   6   | Application: Password Storage  |  2:00
+10:30   |   7   | Application: Data Integrity    |  1:30
+12:00   |   8   | From Hashing to Blockchain     |  1:30
+13:30   |   9   | Think-Pair-Share Exercise      |  1:00
+14:30   |  10   | Key Takeaways                  |  0:30
+
+
+PRESENTER NOTES
+===============
+
+Slide 1 — Title (0:00–0:30)
+----------------------------
+- Greet the audience, introduce yourself and the topic.
+- Set expectations: "In 15 minutes, we'll go from passwords to blockchain."
+
+
+Slide 2 — A Question to Start (0:30–2:00)
+------------------------------------------
+- Ask students to raise hands for A or B.
+- Most will guess A. Reveal: the answer is B!
+- Websites store a fingerprint of your password, not the password itself.
+  This fingerprint is called a HASH.
+- Transition: "Let's learn what that means."
+
+
+Slide 3 — What Is a Hash Function? (2:00–4:00)
+-----------------------------------------------
+- Walk through the diagram: any input goes in, a fixed-size digest comes out.
+- Analogy: Think of it like a blender. You can put anything in, but you
+  always get a smoothie. You cannot un-blend it back to the original fruit.
+- Mention SHA-256 as a common example.
+
+
+Slide 4 — Three Key Properties (4:00–6:30)
+-------------------------------------------
+- Spend ~45 seconds on each property with a real-world analogy:
+  1. Deterministic = like a fingerprint, always the same for the same person.
+  2. One-way = like baking a cake — you cannot get eggs back from a cake.
+  3. Collision resistant = finding two people with the same fingerprint is
+     nearly impossible.
+- These three properties are what make hashing useful.
+- Pause to check understanding.
+
+
+Slide 5 — The Avalanche Effect (6:30–8:30)
+-------------------------------------------
+- Live demo opportunity: If time allows, open an online SHA-256 tool and
+  hash "hello". Then change one letter to show how the entire output changes.
+- Key point: just changing 'h' to 'H' changes every character of the hash.
+- Emphasize: this is NOT encryption — you cannot reverse it.
+
+
+Slide 6 — Application: Password Storage (8:30–10:30)
+-----------------------------------------------------
+- Connect back to the opening question — this is why the answer was B!
+- Walk through the 3 steps carefully:
+  1. Sign up  -> server hashes and stores the hash only
+  2. Log in   -> server hashes your input and compares hashes
+  3. Breach   -> attacker gets hashes, not passwords
+- Mention that real systems also use salting (adding random data before
+  hashing), but that's for a security course.
+
+
+Slide 7 — Application: Data Integrity (10:30–12:00)
+----------------------------------------------------
+- Ask: "Have you ever downloaded software and seen a SHA-256 checksum
+  on the page?"
+- Sender publishes file + hash; receiver downloads, re-hashes, and compares.
+- The avalanche effect means even one flipped bit changes the entire hash.
+- Transition: "This same idea scales up to protect entire blockchains..."
+
+
+Slide 8 — From Hashing to Blockchain (12:00–13:30)
+---------------------------------------------------
+- Key slide — connect everything together.
+- Each block includes the hash of the previous block.
+- If anyone changes data in Block 1, the hash changes -> Block 2's
+  "Prev Hash" mismatches -> entire chain breaks.
+- This is the core insight of blockchain security.
+- Optional personal touch: mention connection to your own research on
+  blockchain and edge computing.
+
+
+Slide 9 — Think-Pair-Share Exercise (13:30–14:30)
+-------------------------------------------------
+- Give ~30 seconds to think individually, ~30 seconds to discuss with
+  a neighbor.
+- Q1: "If two students submit the same homework file, will their hashes
+  match?"
+  -> YES — deterministic! (Property #1)
+- Q2: "Can a hash function compress files for later decompression?"
+  -> NO — hashing is one-way/lossy (Property #2). Compression is
+     reversible; hashing is not.
+- If students are confused, use the blender analogy again.
+
+
+Slide 10 — Key Takeaways (14:30–15:00)
+---------------------------------------
+- Recap the journey: password question -> hash functions -> properties
+  -> applications -> blockchain.
+- Tease next lecture: "Encryption vs. Hashing — What's the difference?"
+- Thank the audience.
