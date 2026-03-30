@@ -269,10 +269,10 @@ s7.addNotes("Relatable example: Have you ever downloaded software and seen a SHA
 // ============================================================
 let s8 = pres.addSlide();
 s8.background = { color: C.offWhite };
-addSectionHeader(s8, "From Hashing to Blockchain");
+addSectionHeader(s8, "From Hashing to Blockchain & Edge");
 addFooter(s8, 8, TOTAL);
 
-s8.addText("What if we chain hashes together?", { x: 0.6, y: 1.1, w: 8, h: 0.45, fontSize: 15, italic: true, color: C.mutedText });
+s8.addText("What if we chain hashes together?", { x: 0.6, y: 1.1, w: 8, h: 0.4, fontSize: 14, italic: true, color: C.mutedText });
 
 const blocks = [
   { label: "Block 1", data: "Tx: Alice\u2192Bob $10", hash: "Hash: 3a7f...", prevHash: "Prev: 0000..." },
@@ -282,29 +282,35 @@ const blocks = [
 
 blocks.forEach(function(b, i) {
   let xPos = 0.4 + i * 3.3;
-  s8.addShape(pres.shapes.RECTANGLE, { x: xPos, y: 1.75, w: 2.8, h: 2.5, fill: { color: C.white }, shadow: makeShadow() });
-  s8.addShape(pres.shapes.RECTANGLE, { x: xPos, y: 1.75, w: 2.8, h: 0.5, fill: { color: C.deepBlue } });
-  s8.addText(b.label, { x: xPos, y: 1.75, w: 2.8, h: 0.5, fontSize: 15, bold: true, color: C.white, align: "center", valign: "middle" });
+  s8.addShape(pres.shapes.RECTANGLE, { x: xPos, y: 1.55, w: 2.8, h: 1.9, fill: { color: C.white }, shadow: makeShadow() });
+  s8.addShape(pres.shapes.RECTANGLE, { x: xPos, y: 1.55, w: 2.8, h: 0.4, fill: { color: C.deepBlue } });
+  s8.addText(b.label, { x: xPos, y: 1.55, w: 2.8, h: 0.4, fontSize: 13, bold: true, color: C.white, align: "center", valign: "middle" });
   s8.addText([
-    { text: b.prevHash, options: { fontSize: 11, fontFace: "Consolas", color: C.accent, breakLine: true } },
-    { text: "", options: { fontSize: 6, breakLine: true } },
-    { text: b.data, options: { fontSize: 12, color: C.darkText, breakLine: true } },
-    { text: "", options: { fontSize: 6, breakLine: true } },
-    { text: b.hash, options: { fontSize: 11, fontFace: "Consolas", color: C.teal, bold: true } }
-  ], { x: xPos + 0.15, y: 2.35, w: 2.5, h: 1.8, valign: "middle" });
+    { text: b.prevHash, options: { fontSize: 10, fontFace: "Consolas", color: C.accent, breakLine: true } },
+    { text: b.data, options: { fontSize: 11, color: C.darkText, breakLine: true } },
+    { text: b.hash, options: { fontSize: 10, fontFace: "Consolas", color: C.teal, bold: true } }
+  ], { x: xPos + 0.15, y: 2.0, w: 2.5, h: 1.35, valign: "middle" });
 
   if (i < 2) {
-    s8.addText("\u2192", { x: xPos + 2.75, y: 2.6, w: 0.6, h: 0.5, fontSize: 28, color: C.teal, align: "center", valign: "middle" });
+    s8.addText("\u2192", { x: xPos + 2.75, y: 2.15, w: 0.6, h: 0.5, fontSize: 24, color: C.teal, align: "center", valign: "middle" });
   }
 });
 
-s8.addShape(pres.shapes.RECTANGLE, { x: 0.6, y: 4.45, w: 8.8, h: 0.65, fill: { color: C.accent, transparency: 88 } });
+s8.addShape(pres.shapes.RECTANGLE, { x: 0.6, y: 3.6, w: 8.8, h: 0.5, fill: { color: C.accent, transparency: 88 } });
 s8.addText([
   { text: "Tamper with Block 1? ", options: { bold: true, color: C.accent } },
-  { text: "Its hash changes \u2192 Block 2\u2019s \u2018Prev Hash\u2019 mismatches \u2192 entire chain breaks! The avalanche effect makes fraud detectable.", options: { color: C.darkText } }
-], { x: 0.8, y: 4.45, w: 8.4, h: 0.65, fontSize: 13, valign: "middle" });
+  { text: "Its hash changes \u2192 Block 2\u2019s \u2018Prev Hash\u2019 mismatches \u2192 entire chain breaks!", options: { color: C.darkText } }
+], { x: 0.8, y: 3.6, w: 8.4, h: 0.5, fontSize: 12, valign: "middle" });
 
-s8.addNotes("KEY SLIDE: Connect everything together. Each block includes the hash of the previous block. If anyone changes data in Block 1, the hash changes, which breaks Block 2 reference, and so on. This is the core insight of blockchain security. Mention: This is actually related to my own research. I study how blockchain architectures can secure edge computing systems.");
+// Edge Computing section
+s8.addShape(pres.shapes.RECTANGLE, { x: 0.6, y: 4.2, w: 8.8, h: 0.95, fill: { color: C.navy }, shadow: makeShadow() });
+s8.addShape(pres.shapes.RECTANGLE, { x: 0.6, y: 4.2, w: 0.08, h: 0.95, fill: { color: C.mint } });
+s8.addText([
+  { text: "Extending to Edge Computing", options: { fontSize: 14, bold: true, color: C.mint, breakLine: true } },
+  { text: "IoT devices and edge nodes generate data far from the cloud. Hashing lets edge devices verify data integrity locally without trusting a central server \u2014 blockchain + hashing enables tamper-proof, decentralized trust at the network edge.", options: { fontSize: 11, color: C.light } }
+], { x: 0.9, y: 4.25, w: 8.3, h: 0.85, valign: "middle" });
+
+s8.addNotes("KEY SLIDE: Connect everything together. Each block includes the hash of the previous block. If anyone changes data in Block 1, the hash changes, which breaks Block 2 reference, and so on. This is the core insight of blockchain security. NEW: Edge computing extension \u2014 explain that IoT sensors, autonomous vehicles, and smart devices at the network edge need to verify data without always reaching the cloud. Hashing provides lightweight integrity checks, and when combined with blockchain, creates a decentralized trust model. Edge nodes can hash sensor readings and chain them into a local ledger, making tampering detectable even without cloud connectivity. Mention: This connects to my own research on how blockchain architectures can secure edge computing systems.");
 
 // ============================================================
 // SLIDE 9: Think-Pair-Share Exercise

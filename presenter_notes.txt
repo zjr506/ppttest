@@ -82,15 +82,22 @@ Slide 7 — Application: Data Integrity (10:30–12:00)
 - Transition: "This same idea scales up to protect entire blockchains..."
 
 
-Slide 8 — From Hashing to Blockchain (12:00–13:30)
----------------------------------------------------
+Slide 8 — From Hashing to Blockchain & Edge (12:00–13:30)
+----------------------------------------------------------
 - Key slide — connect everything together.
 - Each block includes the hash of the previous block.
 - If anyone changes data in Block 1, the hash changes -> Block 2's
   "Prev Hash" mismatches -> entire chain breaks.
 - This is the core insight of blockchain security.
-- Optional personal touch: mention connection to your own research on
-  blockchain and edge computing.
+- NEW — Edge Computing extension:
+  - IoT sensors, autonomous vehicles, and smart devices at the network
+    edge need to verify data without always reaching the cloud.
+  - Hashing provides lightweight integrity checks at the edge.
+  - Combined with blockchain, this creates a decentralized trust model:
+    edge nodes hash sensor readings and chain them into a local ledger,
+    making tampering detectable even without cloud connectivity.
+- Personal touch: mention connection to your own research on how
+  blockchain architectures can secure edge computing systems.
 
 
 Slide 9 — Think-Pair-Share Exercise (13:30–14:30)
